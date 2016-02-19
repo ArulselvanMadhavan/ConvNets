@@ -16,6 +16,6 @@
 1. Try prediction with any of the linear classifiers to ease in to the project before moving to CNN. This is up for debate.
 
 <h2>Learn about CNN</h2>
-<h3><i style="color:red">Owner:All</i></h3>
+<h3><i>Owner:All</i></h3>
 Up for Debate:
 Force Unit test as a requirement
