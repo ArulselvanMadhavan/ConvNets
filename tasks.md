@@ -10,3 +10,7 @@
 1. Research about the dataset.
 2. Parse the dataset
 3. Load them into programs
+
+<h2>Linear Classifiers</h2>
+<h3>Owner:Open</h3>
+1. Try prediction with any of the linear classifiers to ease in to the project before moving to CNN. This is up for debate.
