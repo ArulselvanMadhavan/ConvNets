@@ -14,7 +14,10 @@
 <h2>Linear Classifiers</h2>
 <h3>Owner:Open</h3>
 1. Try prediction with any of the linear classifiers to ease in to the project before moving to CNN. This is up for debate.
-2. Maybe try SVM and KNN, just for fun
+2. SVM - Arul
+3. KNN - Arul
+4. Feature Extraction - ?
+5. ZCA Whitening - ?
 
 <h2>Learn about CNN</h2>
 <h3><i>Owner:All</i></h3>
