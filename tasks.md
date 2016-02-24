@@ -17,7 +17,7 @@
 2. SVM - Arul
 3. KNN - Arul
 4. Feature Extraction - ?
-5. ZCA Whitening - ?
+5. ZCA Whitening - Deepen
 
 <h2>Learn about CNN</h2>
 <h3><i>Owner:All</i></h3>
