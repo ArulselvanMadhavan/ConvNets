@@ -3,4 +3,6 @@
 2. Order them by priority and usefulness.
 
 
-Dataset: https://www.cs.toronto.edu/~kriz/cifar.html
+1. Dataset: https://www.cs.toronto.edu/~kriz/cifar.html
+2. Project Proposal: https://docs.google.com/document/d/1iXPd0QsV7LrrwqoxpJNTDavmNso57frFpiG_xzRufDE/edit?usp=sharing
+
