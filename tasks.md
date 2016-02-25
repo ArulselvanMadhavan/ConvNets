@@ -16,8 +16,9 @@
 1. Try prediction with any of the linear classifiers to ease in to the project before moving to CNN. This is up for debate.
 2. SVM - Arul
 3. KNN - Arul
-4. Feature Extraction - ?
-5. ZCA Whitening - Deepen
+4. Soft Regression - ?
+5. Feature Extraction - ?
+6. ZCA Whitening - Deepen
 
 <h2>Learn about CNN</h2>
 <h3><i>Owner:All</i></h3>
