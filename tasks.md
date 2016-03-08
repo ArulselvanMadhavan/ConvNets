@@ -14,11 +14,12 @@
 <h2>Linear Classifiers</h2>
 <h3>Owner:Open</h3>
 1. Try prediction with any of the linear classifiers to ease in to the project before moving to CNN. This is up for debate.
-2. SVM - Arul
-3. KNN - Arul
-4. Soft Regression - ?
-5. Feature Extraction - ?
-6. ZCA Whitening - Deepen
+2. SVM - 
+3. KNN - 
+4. Soft Regression - 
+5. Feature Extraction - 
+6. ZCA Whitening 
+7. HOG
 
 <h2>Learn about CNN</h2>
 <h3><i>Owner:All</i></h3>
