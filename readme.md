@@ -1,6 +1,11 @@
 1. Instructions to run the code goes here.
 2. Track all softwares and their versions here. It is the responsibility of the new library/package adder to update this file.
 
+<b>Dependencies</b>
+
+1. NumPy -- pip install numpy
+2. h5py -- pip install h5py
+
 
 <b>Load Dataset</b>
 

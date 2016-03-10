@@ -7,6 +7,8 @@ from LoadDataset import load_CIFAR_Dataset
 import h5py
 import argparse
 
+from ZCAWhitening import zca
+
 """
 GLOBAL CONSTANTS
 """
@@ -68,6 +70,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.algo == KNN_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
+        #XZtrain = zca(X_train)
+        #print(XZtrain)
         print("KNN method yet to be implemented")
     elif args.algo == SVM_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
