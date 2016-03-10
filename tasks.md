@@ -20,6 +20,7 @@
 5. Feature Extraction - 
 6. ZCA Whitening 
 7. HOG
+8. Cross Validation
 
 <h2>Learn about CNN</h2>
 <h3><i>Owner:All</i></h3>
