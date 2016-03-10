@@ -8,7 +8,9 @@
 3. Histogram of Oriented Gradients
 
     http://pydoc.net/Python/scikits-image/0.4.2/skimage.feature.hog
+    
     http://users.utcluj.ro/~raluca/prs/prs_lab_05e.pdf
+    
     https://www.youtube.com/watch?v=7S5qXET179I
 4. Linear Classifier Resource - http://cs231n.github.io/linear-classify/
 
