@@ -5,4 +5,8 @@
 
 1. Dataset: https://www.cs.toronto.edu/~kriz/cifar.html
 2. Project Proposal: https://docs.google.com/document/d/1iXPd0QsV7LrrwqoxpJNTDavmNso57frFpiG_xzRufDE/edit?usp=sharing
+3. Histogram of Oriented Gradients - 
+    http://pydoc.net/Python/scikits-image/0.4.2/skimage.feature.hog
+    http://users.utcluj.ro/~raluca/prs/prs_lab_05e.pdf 
+4. Linear Classifier Resource - http://cs231n.github.io/linear-classify/
 
