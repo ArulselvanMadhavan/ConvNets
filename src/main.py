@@ -7,7 +7,8 @@ from LoadDataset import load_CIFAR_Dataset
 import h5py
 import argparse
 
-from ZCAWhitening import zca
+
+from ZCAWhitening import zca,test_zca,construct_image,construct_ZCAimage
 
 """
 GLOBAL CONSTANTS
@@ -63,6 +64,7 @@ def getDataset(args):
     return X_train, y_train, X_test, y_test
 
 if __name__ == '__main__':
+    import cv2
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--loadCIFAR", help="loads the data in ../data folder",
                         action="store_true")
@@ -70,8 +72,13 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.algo == KNN_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
-        #XZtrain = zca(X_train)
-        #print(XZtrain)
+        print(X_test)
+        name1 = "OriginalTestImage.png"
+        construct_image(X_test,y_test,name1)
+        XZ_test = test_zca(X_test)
+        print(XZ_test)
+        name2 = "ZCATestImage.png"
+        construct_ZCAimage(XZ_test,y_test,name2)
         print("KNN method yet to be implemented")
     elif args.algo == SVM_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)

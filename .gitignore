@@ -13,3 +13,5 @@ data/cifar-10-batches-py/test_batch
 data
 .idea/
 *.pyc
+src/*.pyc
+src/ZCAWhitening.pyc

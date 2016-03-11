@@ -1,11 +1,11 @@
-import cPickle as pickle
+import pickle as pickle
 import numpy as np
 import os
 
 
 def load_CIFAR_batch(filename):
     """
-    Loads the dataset
+    Loads the datasets
     :param filename: Filename to be read
     :return: Format of the matrix 10000 x 3072
     """
