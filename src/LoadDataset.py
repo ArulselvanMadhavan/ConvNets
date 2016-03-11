@@ -23,7 +23,7 @@ def getCIFAR_as_32Pixels_Image(arr):
     :param arr:
     :return:
     """
-    return arr.reshape(10000, 3, 32, 32).transpose(0,2,3,1).astype("float")
+    return arr.reshape(arr.shape[0], 3, 32, 32).transpose(0,2,3,1).astype("float")
 
 def load_CIFAR_Dataset(CIFAR_HOME):
     """
