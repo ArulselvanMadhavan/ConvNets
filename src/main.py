@@ -6,9 +6,10 @@ import numpy as np
 from LoadDataset import load_CIFAR_Dataset, getCIFAR_as_32Pixels_Image
 import h5py
 import argparse
-from Features import Features
+# from Features import Features
 
 from ZCAWhitening import zca,test_zca,construct_image,construct_ZCAimage
+from softmaxRegression import execute_softmax
 
 """
 GLOBAL CONSTANTS
@@ -26,6 +27,7 @@ KNN_ARGS = "knn"
 SVM_ARGS = "svm"
 ZCA_ARGS = "zca"
 HOG_ARGS = "hog"
+SOFTMAX_ARGS = "softmax"
 DEFAULT_CROSS_VALIDATION_FOLDS = 5
 
 
@@ -83,7 +85,7 @@ if __name__ == '__main__':
                                      formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-l", "--loadCIFAR", help="loads the data in ../data folder",
                         action="store_true")
-    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)", choices=[KNN_ARGS, SVM_ARGS])
+    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)", choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS])
     parser.add_argument("-f", "--features",
                         help="Enter the feature selection Algorithm(s) Index of your choice\n"
                              "1.HOG\n"
@@ -94,20 +96,23 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.algo == KNN_ARGS:
+        #TO-DO When KNN is implemented, move this into their preprocessing step
+        #TO-DO Feature Extraction takes time, save them into h5 file and load them directly
+        # if args.features:
+        #     X_train = getCIFAR_as_32Pixels_Image(X_train)
+        #     X_test = getCIFAR_as_32Pixels_Image(X_test)
+        #     ftsObj = getFeatureFunctions(args)
+        #     # X_train = ftsObj.extract_features(X_train)
+        #     X_test = ftsObj.extract_features(X_test)
+        # print(X_test.shape)
+        print("KNN method yet to be implemented")
+    if args.algo == SOFTMAX_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
+        execute_softmax(X_train,y_train,X_test,y_test)
+    if args.algo == ZCA_ARGS:
         construct_image(X_test,y_test,"original.png")
         XZ_test=test_zca(X_test)
         construct_ZCAimage(XZ_test,y_test,"zca.png")
-        #TO-DO When KNN is implemented, move this into their preprocessing step
-        #TO-DO Feature Extraction takes time, save them into h5 file and load them directly
-        if args.features:
-            X_train = getCIFAR_as_32Pixels_Image(X_train)
-            X_test = getCIFAR_as_32Pixels_Image(X_test)
-            ftsObj = getFeatureFunctions(args)
-            # X_train = ftsObj.extract_features(X_train)
-            X_test = ftsObj.extract_features(X_test)
-        print(X_test.shape)
-        print("KNN method yet to be implemented")
     elif args.algo == SVM_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
         print("SVM yet to be implemented")
