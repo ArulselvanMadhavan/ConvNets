@@ -6,7 +6,7 @@ import numpy as np
 from LoadDataset import load_CIFAR_Dataset, getCIFAR_as_32Pixels_Image
 import h5py
 import argparse
-# from Features import Features
+from Features import Features
 
 from ZCAWhitening import zca,test_zca,construct_image,construct_ZCAimage
 from softmaxRegression import execute_softmax
@@ -28,6 +28,7 @@ SVM_ARGS = "svm"
 ZCA_ARGS = "zca"
 HOG_ARGS = "hog"
 SOFTMAX_ARGS = "softmax"
+HSV_ARGS = "hsv"
 DEFAULT_CROSS_VALIDATION_FOLDS = 5
 
 
@@ -71,13 +72,17 @@ def getDataset(args):
 def getFeatureFunctions(args):
     """
     Based on the user's choice pass the appropriate functions
+    For more details look into features class
     :param args:
     :return:
     """
     functionsArray = Features.getSupportedFunctions()
-    featureFunctions = functionsArray[args.features]
+    functionsList = sub1FromList(args.features)
+    featureFunctions = functionsArray[functionsList]
     return Features(featureFunctions)
 
+def sub1FromList(list):
+    return [x - 1 for x in list]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='details',
@@ -86,25 +91,32 @@ if __name__ == '__main__':
     parser.add_argument("-l", "--loadCIFAR", help="loads the data in ../data folder",
                         action="store_true")
     parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)", choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS])
-    parser.add_argument("-f", "--features",
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-f", "--features",
                         help="Enter the feature selection Algorithm(s) Index of your choice\n"
                              "1.HOG\n"
-                             "2.ZCA\n",
+                             "2.Histogram\n",
                         nargs='+',
                         type=int,
-                        choices=[0, 1, 2])
+                        choices=[1, 2])
+    group.add_argument("-z","--zca",help="ZCA Whitening",action="store_true")
     args = parser.parse_args()
 
     if args.algo == KNN_ARGS:
         #TO-DO When KNN is implemented, move this into their preprocessing step
         #TO-DO Feature Extraction takes time, save them into h5 file and load them directly
-        # if args.features:
-        #     X_train = getCIFAR_as_32Pixels_Image(X_train)
-        #     X_test = getCIFAR_as_32Pixels_Image(X_test)
-        #     ftsObj = getFeatureFunctions(args)
-        #     # X_train = ftsObj.extract_features(X_train)
-        #     X_test = ftsObj.extract_features(X_test)
-        # print(X_test.shape)
+        X_train, y_train, X_test, y_test = getDataset(args)
+        if args.zca:
+            print("ZCA not implemented")
+        elif args.features:
+            #Call Feature Extraction techiniques
+            X_train, y_train, X_test, y_test = getDataset(args)
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            ftsObj = getFeatureFunctions(args)
+            # X_train = ftsObj.extract_features(X_train)
+            X_test = ftsObj.extract_features(X_test)
+        print(X_test.shape)
         print("KNN method yet to be implemented")
     if args.algo == SOFTMAX_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
