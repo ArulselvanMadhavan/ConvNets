@@ -2,14 +2,20 @@
 Acts as the entry point.
 Main program that calls other programs
 """
+
+import os
+os.chdir('/Users/mavezsinghdabas/ConvNets/src')
+
 import numpy as np
 from LoadDataset import load_CIFAR_Dataset, getCIFAR_as_32Pixels_Image
 import h5py
 import argparse
 from Features import Features
 
-from ZCAWhitening import zca,test_zca,construct_image,construct_ZCAimage
+#from ZCAWhitening import zca,test_zca,construct_image,construct_ZCAimage
 from softmaxRegression import execute_softmax
+
+from knn_Implement import *
 
 """
 GLOBAL CONSTANTS
@@ -106,6 +112,8 @@ if __name__ == '__main__':
         #TO-DO When KNN is implemented, move this into their preprocessing step
         #TO-DO Feature Extraction takes time, save them into h5 file and load them directly
         X_train, y_train, X_test, y_test = getDataset(args)
+        print("Started with implementing KNN")
+        executeKNN(X_train, y_train, X_test, y_test)
         if args.zca:
             print("ZCA not implemented")
         elif args.features:
@@ -117,14 +125,15 @@ if __name__ == '__main__':
             # X_train = ftsObj.extract_features(X_train)
             X_test = ftsObj.extract_features(X_test)
         print(X_test.shape)
-        print("KNN method yet to be implemented")
+#        print("KNN method yet to be implemented")
     if args.algo == SOFTMAX_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
         execute_softmax(X_train,y_train,X_test,y_test)
     if args.algo == ZCA_ARGS:
-        construct_image(X_test,y_test,"original.png")
-        XZ_test=test_zca(X_test)
-        construct_ZCAimage(XZ_test,y_test,"zca.png")
+        print("This is just and experiment to see that the code works")
+#        construct_image(X_test,y_test,"original.png")
+#        XZ_test=test_zca(X_test)
+#        construct_ZCAimage(XZ_test,y_test,"zca.png")
     elif args.algo == SVM_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
         print("SVM yet to be implemented")
