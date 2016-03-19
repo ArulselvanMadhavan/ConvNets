@@ -60,7 +60,7 @@ class NearestNeighbor(object):
 #      print(Ypred[i])
 #      print(knear[i])
 #      print("The iteration is =  %d",i)        
-      print("The predicted Y after iteration is",knear)
+#      print("The predicted Y after iteration is",knear)
 
     return knear
 
@@ -91,17 +91,17 @@ def executeNN(X_train, y_train, X_test, y_test):
 
 
 def executeKNN(X_train, y_train, X_test, y_test):
-    X_train = X_train[:1000,:]
-    y_train = y_train[:1000]
-    X_test = X_test[:1000,:]
-    y_test = y_test[:1000]
+#    X_train = X_train[:1000,:]
+#    y_train = y_train[:1000]
+#    X_test = X_test[:1000,:]
+#    y_test = y_test[:1000]
     
     # assume we have Xtr_rows, Ytr, Xte_rows, Yte as before
     # recall Xtr_rows is 50,000 x 3072 matrix
-#    Xval_rows = X_train[:1000, :] # take first 1000 for validation
-#    Yval = y_train[:1000]
-#    Xtr_rows = X_train[1000:, :] # keep last 49,000 for train
-#    Ytr = y_train[1000:]
+    Xval_rows = X_train[:100, :] # take first 1000 for validation
+    Yval = y_train[:100]
+    Xtr_rows = X_train[100:, :] # keep last 49,000 for train
+    Ytr = y_train[100:]
     
     # find hyperparameters that work best on the validation set
     validation_accuracies = []
@@ -109,14 +109,15 @@ def executeKNN(X_train, y_train, X_test, y_test):
     
       # use a particular value of k and evaluation on validation data
       nn = NearestNeighbor()
-      nn.train(X_train, y_train)
+      nn.train(Xtr_rows, Ytr)
       # here we assume a modified NearestNeighbor class that can take a k as input
-      Yval_predict = nn.predict(X_test, y_train,k = k)
-      acc = np.mean(Yval_predict == y_train)
-      print 'accuracy: %f' % (acc,)
+      Yval_predict = nn.predict(Xval_rows, y_train,k = k)
+      print(Yval_predict)
+#      acc = np.mean(Yval_predict == Yval)
+#      print 'accuracy: %f' % (Yval_predict,)
     
       # keep track of what works on the validation set
-      validation_accuracies.append((k, acc))
+      validation_accuracies.append((k))
 
 
 
