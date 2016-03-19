@@ -4,7 +4,6 @@ Main program that calls other programs
 """
 
 import os
-os.chdir('/Users/mavezsinghdabas/ConvNets/src')
 
 import numpy as np
 from LoadDataset import load_CIFAR_Dataset, getCIFAR_as_32Pixels_Image
