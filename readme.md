@@ -19,9 +19,9 @@
 CrossValidation.py is a simple utility to generate the cross validation folds.
 
 Here is a template for using it.
+```python
 
-
-    ```python
+    
     1. Create an object.
     
     crossValidObj = CrossValidation(numOfFolds, allData, allLabels)
@@ -47,4 +47,4 @@ Here is a template for using it.
         y_test = crossValidObj.labels_test
         //Call Whatever method you want.
         //Average the accuracy
-    ```
+```
