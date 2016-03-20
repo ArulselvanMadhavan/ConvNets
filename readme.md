@@ -19,16 +19,15 @@
 CrossValidation.py is a simple utility to generate the cross validation folds.
 
 Here is a template for using it.
+    ```python
     1. Create an object.
     
-    ```python
     crossValidObj = CrossValidation(numOfFolds, allData, allLabels)
-    ```
+    
     2. Generate Train and test
     
-    ```python
     foldsGen = crossValidObj.generateTrainAndTest()
-    ```
+    
     
     
     3. Iterate over the num of folds and access the train and test data
