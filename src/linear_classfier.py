@@ -54,7 +54,7 @@ class LinearClassifier:
             # print self.W
             # print 'dsfad', grad.shape
             if verbose and (i % 100 == 0):
-                print('iteration %d/%d: loss %f' % (i, num_iters, loss))
+                print 'iteration %d/%d: loss %f' % (i, num_iters, loss)
 
         return losses_history
 
