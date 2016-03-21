@@ -8,6 +8,15 @@
     http://users.utcluj.ro/~raluca/prs/prs_lab_05e.pdf
     
     https://www.youtube.com/watch?v=7S5qXET179I
+    
+    https://www.youtube.com/watch?v=7S5qXET179I
+    
+    
 4. Linear Classifier Resource - http://cs231n.github.io/linear-classify/
 5. Image Gradients, Gradient Magnitude and Gradient Orientation - https://www.youtube.com/watch?v=j7r3C-otk-U
+6. Softmax:
+    
+    http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial
+
+    http://houxianxu.github.io/logistic-softmax-regression/
 
