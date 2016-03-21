@@ -5,9 +5,7 @@ Created on Fri Mar 18 13:35:13 2016
 @author: mavezsinghdabas
 """
 import os
-os.chdir('/Users/mavezsinghdabas/ConvNets/src')
-import pandas as py
-import numpy as np
+os.chdir(os.getcwd())
 from LoadDataset import *
 from collections import defaultdict
 

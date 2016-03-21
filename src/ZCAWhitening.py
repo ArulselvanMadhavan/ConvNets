@@ -1,22 +1,6 @@
 import numpy as np
-import cv2
 
-def zca(inputMatrix):
-    """
-    Applys zca whitening to input matrix
-    :param 10000 X 3072 Input Matrix
-    :return: returns Matrix with Data whitening
-    """
-
-    sigma = np.dot(inputMatrix.T, inputMatrix) / float(inputMatrix.shape[0])  # Correlation matrix
-    U, S, V = np.linalg.svd(sigma)  # Singular Value Decomposition
-    epsilon = 0.1  # Whitening constant, it prevents division by zero
-    ZCAMatrix = np.dot(np.dot(U, np.diag(1.0 / np.sqrt(S + epsilon))), U.T)  # ZCA Whitening matrix
-    np.savetxt('zca_white.txt', ZCAMatrix)  ## Saving zca matrix
-    return np.dot(ZCAMatrix, inputMatrix.T)  # Data whitening
-
-
-def test_zca(dat):
+def zca(dat):
     N = dat.shape[0]
     X = dat.reshape((N, -1)) / 255.0
     D = X.shape[1]
