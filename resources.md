@@ -14,4 +14,9 @@
     
 4. Linear Classifier Resource - http://cs231n.github.io/linear-classify/
 5. Image Gradients, Gradient Magnitude and Gradient Orientation - https://www.youtube.com/watch?v=j7r3C-otk-U
+6. Softmax:
+    
+    http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial
+
+    http://houxianxu.github.io/logistic-softmax-regression/
 
