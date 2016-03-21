@@ -15,6 +15,7 @@ from Features import Features
 from softmaxRegression import execute_softmax
 
 from knn_Implement import *
+from svm_Implement import *
 
 """
 GLOBAL CONSTANTS
@@ -134,6 +135,11 @@ if __name__ == '__main__':
 #        XZ_test=test_zca(X_test)
 #        construct_ZCAimage(XZ_test,y_test,"zca.png")
     elif args.algo == SVM_ARGS:
+        print("SVM implementation")
         X_train, y_train, X_test, y_test = getDataset(args)
-        print("SVM yet to be implemented")
+        executeSVM(X_train, y_train, X_test, y_test)
+        print("SVM implementation")
         # Add other algorithms like logistic regression here
+
+
+
