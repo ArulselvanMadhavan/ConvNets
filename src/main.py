@@ -132,8 +132,6 @@ if __name__ == '__main__':
 #        print("KNN method yet to be implemented")
     if args.algo == SOFTMAX_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
-        X_train = getCIFAR_as_32Pixels_Image(X_train)
-        X_test = getCIFAR_as_32Pixels_Image(X_test)
         if args.zca:
             print("ZCA Pre Processing Started")
             X_train = zca(X_train)
@@ -151,6 +149,8 @@ if __name__ == '__main__':
             X_test = ftsObj.extract_features(X_test)
             execute_softmax(X_train,y_train,X_test,y_test)
         else:
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
             execute_softmax(X_train,y_train,X_test,y_test)
     if args.algo == ZCA_ARGS:
         print("This is just and experiment to see that the code works")
