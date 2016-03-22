@@ -7,7 +7,7 @@ Created on Fri Mar 18 13:35:13 2016
 
 import numpy as np 
 import time
-from algorithms.classifiers import SVM
+
 # ----------------------------------------------------------------------------------------
 
 def loss_grad_svm_vectorized(W, X, y, reg):
