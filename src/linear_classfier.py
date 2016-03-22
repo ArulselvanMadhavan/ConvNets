@@ -1,5 +1,5 @@
 import numpy as np
-from loss_grad_softmax import loss_grad_softmax_vectorized,loss_grad_softmax_naive
+from loss_grad_softmax import loss_grad_softmax_vectorized,loss_grad_softmax_naive,loss_grad_svm_vectorized
 
 
 class LinearClassifier:

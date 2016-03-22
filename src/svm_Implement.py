@@ -12,7 +12,7 @@ from linear_classfier import *
 
 # ----------------------------------------------------------------------------------------
 
-def executeSVM(X_train, y_train, X_test, y_test):
+def executeSVM(X_train, y_train, OX_test, oy_test):
     learning_rates = [1e-5, 1e-8]
     regularization_strengths = [10e2, 10e4]
     results = {}
