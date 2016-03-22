@@ -126,7 +126,6 @@ if __name__ == '__main__':
         print(X_test.shape)
         print("Started with implementing KNN")
         executeKNN(X_train, y_train, X_test, y_test)
-#        print("KNN method yet to be implemented")
     if args.algo == SOFTMAX_ARGS:
         X_train, y_train, X_test, y_test = getDataset(args)
         if args.zca:
