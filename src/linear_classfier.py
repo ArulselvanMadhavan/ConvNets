@@ -106,3 +106,8 @@ class Softmax(LinearClassifier):
             return loss_grad_softmax_vectorized(self.W, X, y, reg)
         else:
             return loss_grad_softmax_naive(self.W, X, y, reg)
+
+class SVM(LinearClassifier):
+    """A subclass for multi-classicication using SVM function"""
+    def loss_grad(self, X, y, reg, vectorized=True):
+        return loss_grad_svm_vectorized(self.W, X, y, reg)
