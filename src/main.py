@@ -156,11 +156,29 @@ if __name__ == '__main__':
         XZ_test=zca(X_test)
         #construct_ZCAimage(XZ_test,y_test,"zca.png")
     elif args.algo == SVM_ARGS:
-        print("SVM implementation")
         X_train, y_train, X_test, y_test = getDataset(args)
-        executeSVM(X_train, y_train, X_test, y_test)
-        print("SVM implementation")
-        # Add other algorithms like logistic regression here
+        if args.zca:
+            print("ZCA Pre Processing Started")
+            X_train = zca(X_train)
+            X_test = zca(X_test)
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            print("ZCA Pre Processing Completed")
+            executeSVM(X_train,y_train,X_test,y_test)
+        elif args.features:
+            #Call Feature Extraction techiniques
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            ftsObj = getFeatureFunctions(args)
+            X_train = ftsObj.extract_features(X_train)
+            X_test = ftsObj.extract_features(X_test)
+            executeSVM(X_train,y_train,X_test,y_test)
+        else:
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            executeSVM(X_train,y_train,X_test,y_test)
+
+
 
 
 
