@@ -12,11 +12,8 @@ import argparse
 from Features import Features
 from softmaxRegression import execute_softmax
 from knn_Implement import *
-<<<<<<< HEAD
 from svm_Implement import *
-=======
 from ZCAWhitening import zca
->>>>>>> origin/master
 
 """
 GLOBAL CONSTANTS
