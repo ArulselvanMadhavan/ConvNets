@@ -1,6 +1,10 @@
 <h1>Resources</h1>
 1. Dataset: https://www.cs.toronto.edu/~kriz/cifar.html
-2. Project Proposal: https://docs.google.com/document/d/1iXPd0QsV7LrrwqoxpJNTDavmNso57frFpiG_xzRufDE/edit?usp=sharing
+2. Project Docs: 
+    
+    Proposal - https://docs.google.com/document/d/1iXPd0QsV7LrrwqoxpJNTDavmNso57frFpiG_xzRufDE/edit?usp=sharing
+    
+    Midterm Report - https://docs.google.com/document/d/1kLsC3xAWkv7oChEke-CFLEPbt350yAKKrnm7591ChF4/edit#
 3. Histogram of Oriented Gradients
 
     http://pydoc.net/Python/scikits-image/0.4.2/skimage.feature.hog
