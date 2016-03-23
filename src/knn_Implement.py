@@ -103,7 +103,7 @@ def executeKNN(X_train, y_train, X_test, y_test):
     
     # find hyperparameters that work best on the validation set
     validation_accuracies = []
-    for k in [15, 25, 55, 105]:
+    for k in [105]:
     
       # use a particular value of k and evaluation on validation data
       nn = NearestNeighbor()
