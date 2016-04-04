@@ -28,8 +28,9 @@
 7. ConvNet
 
 Linear Net - http://people.whitman.edu/~hundledr/courses/M350S08/Ch10.pdf
-Theano - 
-http://deeplearning.net/tutorial/mlp.html
+
+
+Theano - http://deeplearning.net/tutorial/mlp.html
 http://deeplearning.net/tutorial/lenet.html
 
 http://andrew.gibiansky.com/blog/machine-learning/convolutional-neural-networks/
