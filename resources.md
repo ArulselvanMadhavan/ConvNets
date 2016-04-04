@@ -24,3 +24,9 @@
 
     http://houxianxu.github.io/logistic-softmax-regression/
 
+
+7. ConvNet
+
+Theano - http://deeplearning.net/tutorial/lenet.html
+
+http://andrew.gibiansky.com/blog/machine-learning/convolutional-neural-networks/
