@@ -35,3 +35,5 @@ Theano - http://deeplearning.net/tutorial/mlp.html
 http://deeplearning.net/tutorial/lenet.html
 
 http://andrew.gibiansky.com/blog/machine-learning/convolutional-neural-networks/
+
+Sample Design: https://github.com/Theano/Theano/blob/master/theano/tensor/signal/conv.py
