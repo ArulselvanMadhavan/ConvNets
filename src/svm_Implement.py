@@ -26,7 +26,7 @@ def executeSVM(X_train, y_train, OX_test, oy_test):
     ## Implementing Cross Validation
     crossValidObj = CrossValidation(5, X_train, y_train)
     foldsGen = crossValidObj.generateTrainAndTest()
-    for i in xrange(5):
+    for i in range(5):
         next(foldsGen)
         X_test = OX_test
         X_train = crossValidObj.train
@@ -57,15 +57,15 @@ def executeSVM(X_train, y_train, OX_test, oy_test):
 
         
         y_train_pred_sgd = SVM_sgd.predict(X_train)[0]
-        print 'Training accuracy: %f' % (np.mean(y_train == y_train_pred_sgd))
+        print('Training accuracy: %f' % (np.mean(y_train == y_train_pred_sgd)))
         y_val_pred_sgd = SVM_sgd.predict(X_val)[0]
-        print 'Validation accuracy: %f' % (np.mean(y_val == y_val_pred_sgd))
+        print('Validation accuracy: %f' % (np.mean(y_val == y_val_pred_sgd)))
 
         i = 0
         interval = 5
         for learning_rate in np.linspace(learning_rates[0], learning_rates[1], num=interval):
             i += 1
-            print 'The current iteration is %d/%d' % (i, interval)
+            print('The current iteration is %d/%d' % (i, interval))
             for reg in np.linspace(regularization_strengths[0], regularization_strengths[1], num=interval):
                 svm = SVM()
                 svm.train(X_train, y_train, method='sgd', batch_size=200, learning_rate=learning_rate,
@@ -84,9 +84,9 @@ def executeSVM(X_train, y_train, OX_test, oy_test):
         # Print out the results
         for learning_rate, reg in sorted(results):
             train_accuracy,val_accuracy = results[(learning_rate, reg)]
-            print 'learning rate %e and regularization %e, \n \
-            the training accuracy is: %f and validation accuracy is: %f.\n' % (learning_rate, reg, train_accuracy, val_accuracy)
-            print accuracy
+            print('learning rate %e and regularization %e, \n \
+            the training accuracy is: %f and validation accuracy is: %f.\n' % (learning_rate, reg, train_accuracy, val_accuracy))
+            print(accuracy)
         
         
         y_test_predict_result = best_svm.predict(X_test)
@@ -94,8 +94,8 @@ def executeSVM(X_train, y_train, OX_test, oy_test):
         test_accuracy = np.mean(oy_test == y_test_predict)
         accuracy.append(test_accuracy)
         totalAccuracy+=test_accuracy
-        print 'The test accuracy is: %f' % test_accuracy
-    print accuracy
+        print('The test accuracy is: %f' % test_accuracy)
+    print(accuracy)
     avgAccuracy = totalAccuracy / 5.0
-    print 'Average Accuracy: %f' % avgAccuracy
+    print('Average Accuracy: %f' % avgAccuracy)
 

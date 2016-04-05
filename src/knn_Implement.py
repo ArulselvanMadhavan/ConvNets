@@ -8,7 +8,7 @@ import os
 os.chdir(os.getcwd())
 from LoadDataset import *
 from collections import defaultdict
-
+import numpy as np
 
 # This will be knn implementation for the Cifar dataset.
 """
@@ -81,7 +81,7 @@ def executeNN(X_train, y_train, X_test, y_test):
     # and now print the classification accuracy, which is the average number
     # of examples that are correctly predicted (i.e. label matches)
     print("Calculating the accuracy")    
-    print 'accuracy: %f' % ( np.mean(Yte_predict == y_test) )
+    print('accuracy: %f' % ( np.mean(Yte_predict == y_test) ))
 
 
 
@@ -112,7 +112,7 @@ def executeKNN(X_train, y_train, X_test, y_test):
       Yval_predict = nn.predict(Xval_rows, y_train,k = k)
       # print(Yval_predict)
       acc = np.mean(Yval_predict == Yval)
-      print 'accuracy: %f' % (acc,)
+      print('accuracy: %f' % (acc,))
     
       # keep track of what works on the validation set
       validation_accuracies.append((k,acc))

@@ -33,6 +33,7 @@ ZCA_ARGS = "zca"
 HOG_ARGS = "hog"
 SOFTMAX_ARGS = "softmax"
 HSV_ARGS = "hsv"
+CNN_ARGS = "cnn"
 DEFAULT_CROSS_VALIDATION_FOLDS = 5
 
 
@@ -177,6 +178,8 @@ if __name__ == '__main__':
             X_train = getCIFAR_as_32Pixels_Image(X_train)
             X_test = getCIFAR_as_32Pixels_Image(X_test)
             executeSVM(X_train,y_train,X_test,y_test)
+    elif args.algo == CNN_ARGS:
+        print("CNN yet to be implemented")
 
 
 
