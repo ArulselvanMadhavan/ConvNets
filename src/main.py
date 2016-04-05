@@ -95,7 +95,8 @@ if __name__ == '__main__':
                                      formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-l", "--loadCIFAR", help="loads the data in ../data folder",
                         action="store_true")
-    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)", choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS, ZCA_ARGS])
+    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)",
+                        choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS, ZCA_ARGS,CNN_ARGS])
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-f", "--features",
                         help="Enter the feature selection Algorithm(s) Index of your choice\n"
