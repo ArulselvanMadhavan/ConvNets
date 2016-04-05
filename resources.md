@@ -39,6 +39,8 @@ http://andrew.gibiansky.com/blog/machine-learning/convolutional-neural-networks/
 Sample Design: https://github.com/Theano/Theano/blob/master/theano/tensor/signal/conv.py
 
 
+Image Processing Basics: https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf
+
 
 Conv Nets - Basic template - Design that is generic enough to incorporate all the layers
 	- Linear Net * M
