@@ -4,20 +4,35 @@ import numpy as np
 
 class LinearNet(BaseLayer):
     def __init__(self):
-        pass
+        self._out = None
+        self._fwdcache = None
 
-    @staticmethod
-    def forward(X=None, W=None, b=None):
+    @property
+    def output(self):
+        return self._out
+
+    @output.setter
+    def output(self, out):
+        self._out = out
+
+    @property
+    def cache(self):
+        return self._fwdcache
+
+    @cache.setter
+    def cache(self, newvalue):
+        self._fwdcache = newvalue
+
+    def forward(self, X, W, b):
         N = X.shape[0]
         D = np.prod(X.shape[1:])
         x2 = np.reshape(X, (N, D))
-        out = np.dot(x2, W) + b
-        cache = (X, W, b)
-        return (out, cache)
+        self.output = np.dot(x2, W) + b
+        self.cache = (X, W, b)
+        return (self.output, self.cache)
 
-    @staticmethod
-    def backward(dout=None, cache=None):
-        x, w, b = cache
+    def backward(self, dout=None):
+        x, w, b = self.cache
         N = x.shape[0]
         D = np.prod(x.shape[1:])
         x_reshaped = np.reshape(x, (N, -1))
