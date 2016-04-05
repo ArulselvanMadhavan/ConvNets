@@ -2,13 +2,6 @@ from abc import abstractmethod, ABCMeta, abstractproperty
 
 
 class BaseLayer(metaclass=ABCMeta):
-    @abstractproperty
-    def output(self):
-        return "Should never return the output from Base class"
-
-    @output.setter
-    def output(self, out):
-        return
 
     @abstractproperty
     def cache(self):

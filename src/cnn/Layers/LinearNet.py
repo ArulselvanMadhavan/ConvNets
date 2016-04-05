@@ -4,16 +4,7 @@ import numpy as np
 
 class LinearNet(BaseLayer):
     def __init__(self):
-        self._out = None
         self._fwdcache = None
-
-    @property
-    def output(self):
-        return self._out
-
-    @output.setter
-    def output(self, out):
-        self._out = out
 
     @property
     def cache(self):
@@ -27,11 +18,10 @@ class LinearNet(BaseLayer):
         N = X.shape[0]
         D = np.prod(X.shape[1:])
         x2 = np.reshape(X, (N, D))
-        self.output = np.dot(x2, W) + b
         self.cache = (X, W, b)
-        return (self.output, self.cache)
+        return np.dot(x2, W) + b
 
-    def backward(self, dout=None):
+    def backward(self, dout):
         x, w, b = self.cache
         N = x.shape[0]
         D = np.prod(x.shape[1:])
