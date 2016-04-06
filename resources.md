@@ -41,6 +41,7 @@ Sample Design: https://github.com/Theano/Theano/blob/master/theano/tensor/signal
 
 Image Processing Basics: https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf
 
+Framework suggested by Ting Chen - http://keras.io/layers/convolutional/
 
 Conv Nets - Basic template - Design that is generic enough to incorporate all the layers
 	- Linear Net * M
