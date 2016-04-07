@@ -74,47 +74,6 @@ def getDataset(load_raw):
     return X_train, y_train, X_test, y_test
 
 
-def normalized_data(train_size=49000, test_size=10000, val_size=1000):
-    """
-    Normalize the input data
-    Separate them into train, test and validation dataset
-    :param train_size:
-    :param test_size:
-    :param val_size:
-    :return:
-    """
-    X_train, Y_train, X_test, Y_test = getDataset(False)
-
-    X_train = getCIFAR_as_32Pixels_Image(X_train)
-    X_test = getCIFAR_as_32Pixels_Image(X_test)
-
-    mask = range(train_size, train_size + val_size)
-    X_val = X_train[mask]
-    y_val = Y_train[mask]
-    mask = range(train_size)
-    X_train = X_train[mask]
-    y_train = Y_train[mask]
-    mask = range(test_size)
-    X_test = X_test[mask]
-    y_test = Y_test[mask]
-
-    mean_image = np.mean(X_train, axis=0)
-    X_train -= mean_image
-    X_val -= mean_image
-    X_test -= mean_image
-
-    # Transpose so that channels come first
-    X_train = X_train.transpose(0, 3, 1, 2).copy()
-    X_val = X_val.transpose(0, 3, 1, 2).copy()
-    X_test = X_test.transpose(0, 3, 1, 2).copy()
-
-    # Package data into a dictionary
-    return {
-        'X_train': X_train, 'y_train': y_train,
-        'X_val': X_val, 'y_val': y_val,
-        'X_test': X_test, 'y_test': y_test,
-    }
-
 
 def getFeatureFunctions(args):
     """
