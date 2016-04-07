@@ -34,3 +34,8 @@ class BaseNeuron(metaclass=ABCMeta):
     @db.setter
     def db(self, newValue):
         pass
+
+    @staticmethod
+    @abstractmethod
+    def generateWeightsAndBias(*args, **kwargs):
+        pass
