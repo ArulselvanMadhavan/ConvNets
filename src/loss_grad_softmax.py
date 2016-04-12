@@ -106,13 +106,13 @@ def loss_grad_svm_vectorized(W, X, y, reg):
      
     
     # get the correct class score 
-    correct_class_score = scores_mat[y, xrange(num_train)] # [1 x N]
+    correct_class_score = scores_mat[y, range(num_train)] # [1 x N]
     
     margins_mat = scores_mat - correct_class_score + delta # [C x N]
 
     # set the negative score to be 0
     margins_mat = np.maximum(0, margins_mat)
-    margins_mat[y, xrange(num_train)] = 0
+    margins_mat[y, range(num_train)] = 0
 
     loss = np.sum(margins_mat) / num_train
 
@@ -125,7 +125,7 @@ def loss_grad_svm_vectorized(W, X, y, reg):
     # compute the number of margin > 0 for each sample
     num_pos = np.sum(margins_mat > 0, axis=0)
     scores_mat_grad[margins_mat > 0] = 1
-    scores_mat_grad[y, xrange(num_train)] = -1 * num_pos
+    scores_mat_grad[y, range(num_train)] = -1 * num_pos
 
     # compute dW
     dW = scores_mat_grad.dot(X.T) / num_train + reg * W

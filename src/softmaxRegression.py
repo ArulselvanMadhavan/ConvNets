@@ -22,7 +22,7 @@ def execute_softmax(X_train,y_train,OX_test,oy_test):
     ## Implementing Cross Validation
     crossValidObj = CrossValidation(5, X_train, y_train)
     foldsGen = crossValidObj.generateTrainAndTest()
-    for i in xrange(5):
+    for i in range(5):
         next(foldsGen)
         X_test = OX_test
         X_train = crossValidObj.train
