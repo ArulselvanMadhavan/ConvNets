@@ -17,13 +17,17 @@ def load_CIFAR_batch(filename):
         Y = np.array(Y)
         return X, Y
 
+
 def getCIFAR_as_32Pixels_Image(arr):
     """
     Returns the array as 32x32 pixel images
     :param arr:
     :return:
     """
-    return arr.reshape(arr.shape[0], 3, 32, 32).transpose(0,2,3,1).astype("float")
+    return arr.reshape(arr.shape[0], 3, 32, 32).transpose(0, 2, 3, 1).astype("float")
+
+
+
 
 def load_CIFAR_Dataset(CIFAR_HOME):
     """
@@ -33,8 +37,8 @@ def load_CIFAR_Dataset(CIFAR_HOME):
     """
     x_temp = []
     y_temp = []
-    for b in range(1,6):
-        f = os.path.join(CIFAR_HOME, 'data_batch_%d' % (b, ))
+    for b in range(1, 6):
+        f = os.path.join(CIFAR_HOME, 'data_batch_%d' % (b,))
         X, Y = load_CIFAR_batch(f)
         x_temp.append(X)
         y_temp.append(Y)

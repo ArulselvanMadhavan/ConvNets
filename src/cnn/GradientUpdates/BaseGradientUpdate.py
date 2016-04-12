@@ -1,0 +1,7 @@
+from abc import ABCMeta, abstractmethod, abstractproperty
+
+
+class BaseGradientUpdate(metaclass=ABCMeta):
+    @abstractmethod
+    def update(self, x, dx):
+        pass

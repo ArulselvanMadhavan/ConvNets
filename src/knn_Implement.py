@@ -8,7 +8,7 @@ import os
 os.chdir(os.getcwd())
 from LoadDataset import *
 from collections import defaultdict
-
+import numpy as np
 
 # This will be knn implementation for the Cifar dataset.
 """
@@ -68,10 +68,10 @@ class NearestNeighbor(object):
 
 def executeNN(X_train, y_train, X_test, y_test):
 #     Takign a subset to calculate the k minimum distance    
-    X_train = X_train[:100,:]
-    y_train = y_train[:100]
-    X_test = X_test[:100,:]
-    y_test = y_test[:100]
+    X_train = X_train[:1000,:]
+    y_train = y_train[:1000]
+    X_test = X_test[:1000,:]
+    y_test = y_test[:1000]
     
     nn = NearestNeighbor() # create a Nearest Neighbor classifier class
     print("Nearest Neighbor crated")
@@ -81,7 +81,7 @@ def executeNN(X_train, y_train, X_test, y_test):
     # and now print the classification accuracy, which is the average number
     # of examples that are correctly predicted (i.e. label matches)
     print("Calculating the accuracy")    
-    print 'accuracy: %f' % ( np.mean(Yte_predict == y_test) )
+    print('accuracy: %f' % ( np.mean(Yte_predict == y_test) ))
 
 
 
@@ -103,7 +103,7 @@ def executeKNN(X_train, y_train, X_test, y_test):
     
     # find hyperparameters that work best on the validation set
     validation_accuracies = []
-    for k in [10, 20, 50, 100]:
+    for k in [105]:
     
       # use a particular value of k and evaluation on validation data
       nn = NearestNeighbor()
@@ -111,11 +111,11 @@ def executeKNN(X_train, y_train, X_test, y_test):
       # here we assume a modified NearestNeighbor class that can take a k as input
       Yval_predict = nn.predict(Xval_rows, y_train,k = k)
       # print(Yval_predict)
-     # acc = np.mean(Yval_predict == Yval)
-      print 'accuracy: %f' % (Yval_predict)
+      acc = np.mean(Yval_predict == Yval)
+      print('accuracy: %f' % (acc,))
     
       # keep track of what works on the validation set
-      validation_accuracies.append((k))
+      validation_accuracies.append((k,acc))
 
 
 

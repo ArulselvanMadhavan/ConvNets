@@ -1,5 +1,5 @@
 import numpy as np
-from loss_grad_softmax import loss_grad_softmax_vectorized,loss_grad_softmax_naive
+from loss_grad_softmax import loss_grad_softmax_vectorized,loss_grad_softmax_naive,loss_grad_svm_vectorized
 
 
 class LinearClassifier:
@@ -54,7 +54,7 @@ class LinearClassifier:
             # print self.W
             # print 'dsfad', grad.shape
             if verbose and (i % 100 == 0):
-                print 'iteration %d/%d: loss %f' % (i, num_iters, loss)
+                print('iteration %d/%d: loss %f' % (i, num_iters, loss))
 
         return losses_history
 
@@ -106,3 +106,8 @@ class Softmax(LinearClassifier):
             return loss_grad_softmax_vectorized(self.W, X, y, reg)
         else:
             return loss_grad_softmax_naive(self.W, X, y, reg)
+
+class SVM(LinearClassifier):
+    """A subclass for multi-classicication using SVM function"""
+    def loss_grad(self, X, y, reg, vectorized=True):
+        return loss_grad_svm_vectorized(self.W, X, y, reg)

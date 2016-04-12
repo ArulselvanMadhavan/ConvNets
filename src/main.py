@@ -33,16 +33,17 @@ ZCA_ARGS = "zca"
 HOG_ARGS = "hog"
 SOFTMAX_ARGS = "softmax"
 HSV_ARGS = "hsv"
+CNN_ARGS = "cnn"
 DEFAULT_CROSS_VALIDATION_FOLDS = 5
 
 
-def getDataset(args):
+def getDataset(load_raw):
     """
     Gets the dataset from the H5 files or from the disk based on the args
-    :param args:
+    :param load_raw:
     :return: Train and Test data
     """
-    if args.loadCIFAR:
+    if load_raw:
         X_train, y_train, X_test, y_test = load_CIFAR_Dataset(DATA_FOLDER_PATH)
 
         with h5py.File(PATH_TO_TRAIN_FILE, 'w') as hf:
@@ -73,6 +74,7 @@ def getDataset(args):
     return X_train, y_train, X_test, y_test
 
 
+
 def getFeatureFunctions(args):
     """
     Based on the user's choice pass the appropriate functions
@@ -85,8 +87,10 @@ def getFeatureFunctions(args):
     featureFunctions = functionsArray[functionsList]
     return Features(featureFunctions)
 
+
 def sub1FromList(list):
     return [x - 1 for x in list]
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='details',
@@ -94,30 +98,31 @@ if __name__ == '__main__':
                                      formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-l", "--loadCIFAR", help="loads the data in ../data folder",
                         action="store_true")
-    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)", choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS, ZCA_ARGS])
+    parser.add_argument(ALGORITHM_ARGS, help="Enter the algorithm to run(in lowercase)",
+                        choices=[KNN_ARGS, SVM_ARGS, SOFTMAX_ARGS, ZCA_ARGS, CNN_ARGS])
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-f", "--features",
-                        help="Enter the feature selection Algorithm(s) Index of your choice\n"
-                             "1.HOG\n"
-                             "2.Histogram\n",
-                        nargs='+',
-                        type=int,
-                        choices=[1, 2])
-    group.add_argument("-z","--zca",help="ZCA Whitening",action="store_true")
+                       help="Enter the feature selection Algorithm(s) Index of your choice\n"
+                            "1.HOG\n"
+                            "2.Histogram\n",
+                       nargs='+',
+                       type=int,
+                       choices=[1, 2])
+    group.add_argument("-z", "--zca", help="ZCA Whitening", action="store_true")
     args = parser.parse_args()
 
     if args.algo == KNN_ARGS:
-        #TO-DO When KNN is implemented, move this into their preprocessing step
-        #TO-DO Feature Extraction takes time, save them into h5 file and load them directly
-        X_train, y_train, X_test, y_test = getDataset(args)
+        # TO-DO When KNN is implemented, move this into their preprocessing step
+        # TO-DO Feature Extraction takes time, save them into h5 file and load them directly
+        X_train, y_train, X_test, y_test = getDataset(args.loadCIFAR)
         if args.zca:
             print("ZCA Pre Processing Started")
             X_train = zca(X_train)
             X_test = zca(X_test)
             print("ZCA Pre Processing Completed")
         elif args.features:
-            #Call Feature Extraction techiniques
-            X_train, y_train, X_test, y_test = getDataset(args)
+            # Call Feature Extraction techiniques
+            X_train, y_train, X_test, y_test = getDataset(args.loadCIFAR)
             X_train = getCIFAR_as_32Pixels_Image(X_train)
             X_test = getCIFAR_as_32Pixels_Image(X_test)
             ftsObj = getFeatureFunctions(args)
@@ -127,7 +132,7 @@ if __name__ == '__main__':
         print("Started with implementing KNN")
         executeKNN(X_train, y_train, X_test, y_test)
     if args.algo == SOFTMAX_ARGS:
-        X_train, y_train, X_test, y_test = getDataset(args)
+        X_train, y_train, X_test, y_test = getDataset(args.loadCIFAR)
         if args.zca:
             print("ZCA Pre Processing Started")
             X_train = zca(X_train)
@@ -135,31 +140,47 @@ if __name__ == '__main__':
             X_train = getCIFAR_as_32Pixels_Image(X_train)
             X_test = getCIFAR_as_32Pixels_Image(X_test)
             print("ZCA Pre Processing Completed")
-            execute_softmax(X_train,y_train,X_test,y_test)
+            execute_softmax(X_train, y_train, X_test, y_test)
         elif args.features:
-            #Call Feature Extraction techiniques
+            # Call Feature Extraction techiniques
             X_train = getCIFAR_as_32Pixels_Image(X_train)
             X_test = getCIFAR_as_32Pixels_Image(X_test)
             ftsObj = getFeatureFunctions(args)
             X_train = ftsObj.extract_features(X_train)
             X_test = ftsObj.extract_features(X_test)
-            execute_softmax(X_train,y_train,X_test,y_test)
+            execute_softmax(X_train, y_train, X_test, y_test)
         else:
             X_train = getCIFAR_as_32Pixels_Image(X_train)
             X_test = getCIFAR_as_32Pixels_Image(X_test)
-            execute_softmax(X_train,y_train,X_test,y_test)
+            execute_softmax(X_train, y_train, X_test, y_test)
     if args.algo == ZCA_ARGS:
         print("This is just and experiment to see that the code works")
-        X_train, y_train, X_test, y_test = getDataset(args)
-        #construct_image(X_test,y_test,"original.png")
-        XZ_test=zca(X_test)
-        #construct_ZCAimage(XZ_test,y_test,"zca.png")
+        X_train, y_train, X_test, y_test = getDataset(args.loadCIFAR)
+        # construct_image(X_test,y_test,"original.png")
+        XZ_test = zca(X_test)
+        # construct_ZCAimage(XZ_test,y_test,"zca.png")
     elif args.algo == SVM_ARGS:
-        print("SVM implementation")
-        X_train, y_train, X_test, y_test = getDataset(args)
-        executeSVM(X_train, y_train, X_test, y_test)
-        print("SVM implementation")
-        # Add other algorithms like logistic regression here
-
-
-
+        X_train, y_train, X_test, y_test = getDataset(args.loadCIFAR)
+        if args.zca:
+            print("ZCA Pre Processing Started")
+            X_train = zca(X_train)
+            X_test = zca(X_test)
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            print("ZCA Pre Processing Completed")
+            executeSVM(X_train, y_train, X_test, y_test)
+        elif args.features:
+            # Call Feature Extraction techiniques
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            ftsObj = getFeatureFunctions(args)
+            X_train = ftsObj.extract_features(X_train)
+            X_test = ftsObj.extract_features(X_test)
+            executeSVM(X_train, y_train, X_test, y_test)
+        else:
+            X_train = getCIFAR_as_32Pixels_Image(X_train)
+            X_test = getCIFAR_as_32Pixels_Image(X_test)
+            executeSVM(X_train, y_train, X_test, y_test)
+    elif args.algo == CNN_ARGS:
+        print(args)
+        print("CNN yet to be implemented")
