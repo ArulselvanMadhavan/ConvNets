@@ -54,6 +54,18 @@ class ConvLayer(BaseLayer, BaseNeuron):
         self._fwdcache = newvalue
 
     def forward(self, x):
+        """
+        X - I/p image
+        N - Number of images
+        C - RGB Channel - 3rd dimension of an image
+        H - Height
+        W - Width
+        HH - Filter Height
+        WW - Filter Width
+
+        :param x:
+        :return:
+        """
         N, C, H, W = x.shape
         F, C, HH, WW = self.W.shape
         stride = self.stride
@@ -86,6 +98,11 @@ class ConvLayer(BaseLayer, BaseNeuron):
         return x_col
 
     def backward(self, dout):
+        """
+        dx,dw,db - gradients of their respective variables
+        :param dout:
+        :return:
+        """
         x, w, b, stride, pad = self.cache, self.W, self.b, self.stride, self.pad
         dx = np.zeros_like(x)
         dw = np.zeros_like(w)
