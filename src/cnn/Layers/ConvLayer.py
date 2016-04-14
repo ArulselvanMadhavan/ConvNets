@@ -5,6 +5,14 @@ import numpy as np
 
 class ConvLayer(BaseLayer, BaseNeuron):
     def __init__(self, W, b, stride, pad):
+        """
+
+        :param W: Weight Matrix
+        :param b: Bias Vector
+        :param stride:
+        :param pad:
+        :return:
+        """
         self._fwdcache = None
         self._W = W
         self._b = b
@@ -66,14 +74,14 @@ class ConvLayer(BaseLayer, BaseNeuron):
         :param x:
         :return:
         """
-        N, C, H, W = x.shape
+        N, C, img_height, img_width = x.shape
         F, C, HH, WW = self.W.shape
         stride = self.stride
         pad = self.pad
-        assert (H + 2 * pad - HH) % stride == 0
-        assert (W + 2 * pad - WW) % stride == 0
-        H_out = 1 + (H + 2 * pad - HH) // stride
-        W_out = 1 + (W + 2 * pad - WW) // stride
+        assert (img_height + 2 * pad - HH) % stride == 0
+        assert (img_width + 2 * pad - WW) % stride == 0
+        H_out = 1 + (img_height + 2 * pad - HH) // stride
+        W_out = 1 + (img_width + 2 * pad - WW) // stride
 
         x_col = np.zeros((N, F, H_out, W_out))
         for img in range(N):
@@ -107,7 +115,7 @@ class ConvLayer(BaseLayer, BaseNeuron):
         dx = np.zeros_like(x)
         dw = np.zeros_like(w)
         db = np.zeros_like(b)
-        N, C, H, W = x.shape
+        N, C, img_height, img_width = x.shape
         F, C, HH, WW = w.shape
         _, _, H_out, W_out = dout.shape
         npad = ((0, 0), (pad, pad), (pad, pad))
