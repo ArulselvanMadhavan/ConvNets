@@ -5,6 +5,7 @@ import numpy as np
 class PoolLayer(BaseLayer):
     def __init__(self, W, stride):
         self._fwdcache = None
+        self._maxIndexCache = None
         self._W = W
         self.stride = stride
 
@@ -51,14 +52,11 @@ class PoolLayer(BaseLayer):
                     w_start += stride
 
         self.cache = x
+        self._maxIndexCache = y_col
         return x_col
 
 
-        self.cache = X
-        return np.maximum(0, X)
 
     def backward(self, dout):
-        dx, x = None, self.cache
-        dx = np.array(dout, copy=True)
-        dx[x <= 0] = 0
-        return dx
+
+        return 0
