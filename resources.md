@@ -43,9 +43,4 @@ Image Processing Basics: https://www.cs.toronto.edu/~kriz/learning-features-2009
 
 Framework suggested by Ting Chen - http://keras.io/layers/convolutional/
 
-Conv Nets - Basic template - Design that is generic enough to incorporate all the layers
-	- Linear Net * M
-	- Conv net * N
-	- Activation functions ->
-	- Loss functions -> SVM or Softmax
-	- Gradient update function -> Stochastic Grad Desc 
+http://colah.github.io/posts/2014-07-Understanding-Convolutions/..
