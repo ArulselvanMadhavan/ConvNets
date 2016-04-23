@@ -8,4 +8,6 @@ class StochasticGradientUpdate(BaseGradientUpdate):
 
     def update(self, x, dx):
         x -= self.learning_rate * dx
-    
+
+    def decay(self,lr_decay):
+        self.learning_rate *= lr_decay
