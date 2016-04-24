@@ -140,7 +140,6 @@ class ConvLayer(BaseLayer, BaseNeuron):
 
     @staticmethod
     def generateWeightsAndBias(weight_dim, weight_scale):
-        # np.random.seed(seed=123)
         W = np.random.normal(loc=0.0,scale=weight_scale,size=weight_dim)
         b = np.zeros(weight_dim[0])
         return W, b
