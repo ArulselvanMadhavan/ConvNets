@@ -10,7 +10,7 @@ from cnn.BaseNeuralNetwork import BaseNeuralNetwork
 class Worker(object):
     def __init__(self, conv_model, update, train_size=49000,
                  test_size=10000, val_size=1000, batch_size=100,
-                 epochs_count=10, lr_decay=1.0, debug=True):
+                 epochs_count=10, lr_decay=1.0, debug=True, print_every=10):
         """
         :param conv_model: A Neural Network model
         :param update: A Gradient Update function
@@ -18,7 +18,7 @@ class Worker(object):
         :param test_size: Test size
         :param val_size: Validation size
         :param batch_size: Batch size
-        :param num_epochs: Number of epochs
+        :param epochs_count: Number of epochs
         :param lr_decay: Learning rate decay
         :param debug: Debug flag
         :param print_every: How often you want to print the training loss
@@ -38,6 +38,7 @@ class Worker(object):
         self.W_configs = []  # Stores the configurations specific to Gradient update functions on W
         self.b_configs = []  # Stores the configurations specific to Gradient update functions on b
         self.loss = 0.0
+        self.print_every = print_every
         for i in range(len(self.model.layer_objs)):
             self.W_configs.append(copy.deepcopy(update))
             self.b_configs.append(copy.deepcopy(update))
@@ -63,10 +64,46 @@ class Worker(object):
             layer_obj.b = next_b
 
     def train(self):
-        """
-        Run optimization to train the model.
-        """
-        print("Yet to be implemented")
+        iterations_count, iterations_per_epoch = Worker.get_iterations_count(self.X_train.shape[0], self.batch_size,
+                                                                             self.epochs_count)
+        for t in range(iterations_count):
+            self._send_pulse()
+
+            # Maybe print training loss
+            if self.debug and t % self.print_every == 0:
+                print('loss: %f after (Iteration %d / %d)' % (
+                    self.loss,t + 1, iterations_count,))
+
+            #Update learning rate after an epoch
+            epoch_end = (t + 1) % iterations_per_epoch == 0
+            if epoch_end:
+                self.epoch += 1
+                for k in range(len(self.model.layer_objs)):
+                    self.W_configs[k].decay(self.lr_decay)
+                    self.b_configs[k].decay(self.lr_decay)
+
+            #Print accuracy after each epoch
+            if epoch_end:
+                train_acc = Validator.get_accuracy(self.model, self.X_train, self.Y_train,
+                                                   sample_size=1000)
+                val_acc = Validator.get_accuracy(self.model, self.X_val, self.Y_val)
+
+                if self.debug:
+                    print('(Epoch %d / %d) train_acc: %f; val_acc: %f' % (
+                        self.epoch, self.epochs_count, train_acc, val_acc))
+
+                if val_acc > self.best_val_acc:
+                    self.best_val_acc = val_acc
+
+                    self.best_Ws = []
+                    self.best_bs = []
+                    for layer_obj in self.model.layer_objs:
+                        self.best_Ws.append(layer_obj.W)
+                        self.best_bs.append(layer_obj.b)
+
+        for layer_id in range(len(self.model.layer_objs)):
+            self.model.layer_objs[layer_id].W = self.best_Ws[layer_id]
+            self.model.layer_objs[layer_id].b = self.best_bs[layer_id]
 
     def test(self):
         """
@@ -112,3 +149,9 @@ class Worker(object):
         X_test = X_test.transpose(0, 3, 1, 2).copy()
 
         return (X_train, y_train, X_val, y_val, X_test, y_test)
+
+    @staticmethod
+    def get_iterations_count(train_size, batch_size, epochs_count):
+        iterations_per_epoch = max(train_size // batch_size, 1)
+        iterations_count = epochs_count * iterations_per_epoch
+        return iterations_count, iterations_per_epoch
