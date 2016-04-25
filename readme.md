@@ -42,7 +42,9 @@
 4. The first argument that you pass to the main.py is the algorithm that you want to run against the dataset.
 	```python
 	python main.py softmax
+	
 	python main.py knn
+	
 	python main.py svm
 	```
 5. The flag '--features' indicates the feature selection algorithms that you want to use.
