@@ -40,19 +40,39 @@
   8. VERY IMPORTANT: We use python2 only to parse the dataset. The rest of the project uses python3.
   9. The raw data takes a lot of time to load. So, we stored the data in HDF5 format for faster loading
 4. The first argument that you pass to the main.py is the algorithm that you want to run against the dataset.
+	```python
+	python main.py softmax
+	python main.py knn
+	python main.py svm
+	```
 5. The flag '--features' indicates the feature selection algorithms that you want to use.
- 	Example usage: If you want to use the HOG feature extraction->
- 				   python main.py softmax -f 1 
- 				   If you want to use the Histogram of colored bins feature extraction
- 				   python main.py softmax -f 2
- 				   If you want to use both
- 				   python main.py softmax -f 1 2
-6. If you want to use ZCA,
- 					python main.py softmax -f 1,2 -z
+  * To use the Histogram of Oriented Gradients
+	```python
+ 	python main.py softmax -f 1 
+ 	```
+  * To use Histogram of Colored Bins
+  	```python
+  	python main.py softmax -f 2
+  	```
+  * To use both feature extraction techniques
+  	```python
+ 	python main.py softmax -f 1 2
+ 	```
+  * To use ZCA,
+ 	```python
+ 	python main.py softmax -z
+ 	```
+  * To use ZCA along with any feature extraction technique
+  	```python
+	python main.py softmax -z -f 1 2
+	```
 7. If you want to run cnn, use the runme.ipynb notebook.
-8. To run that notebook, you must have the jupyter kernel installed.
- 	 From the src directory start the kernel "jupyter notebook"
-9. Follow the steps in the notebook to test the CNN implementation.
+8. To run that notebook, you must have the jupyter kernel installed. 
+9. From the src/ directory start the kernel 
+	```sh
+	jupyter notebook
+	```
+10. Follow the steps in the notebook to test the CNN implementation.
 
 
  Note: We have tested our code on MacOSx machine. So, we'd prefer that you use a MacOSX machine to test our implementation.If you run into any issues while testing the code, please email us.
