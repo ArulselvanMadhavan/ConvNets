@@ -21,24 +21,24 @@
 	```
 	
 3. Download the data and save it in the data folder
-  1. Download the python version from here -> https://www.cs.toronto.edu/~kriz/cifar.html
-  2. The dataset can be parsed and loaded with python2. This is a restriction imposed by the dataset.
-  3. Install python2
-  4. Install numpy 
+  * Download the python version from here -> https://www.cs.toronto.edu/~kriz/cifar.html
+  * The dataset can be parsed and loaded with python2. This is a restriction imposed by the dataset.
+  * Install python2
+  * Install numpy 
 	```python
 	pip install numpy
 	```
-  5. Install h5py 
+  * Install h5py 
 	```python
 	pip install h5py
 	```
-  6. Run the following command
+  * Run the following command
 	```python
 	python main.py knn -l
 	```
-  7. After you run the command, you should see train.h5,test.h5 files created in the data directory. Only for the first time,you have to use the "-l" flag. Once you have the 'h5' files created, you can discard the "-l" flag. 
-  8. VERY IMPORTANT: We use python2 only to parse the dataset. The rest of the project uses python3.
-  9. The raw data takes a lot of time to load. So, we stored the data in HDF5 format for faster loading
+  * After you run the command, you should see train.h5,test.h5 files created in the data directory. Only for the first time,you have to use the "-l" flag. Once you have the 'h5' files created, you can discard the "-l" flag. 
+  * VERY IMPORTANT: We use python2 only to parse the dataset. The rest of the project uses python3.
+  * The raw data takes a lot of time to load. So, we stored the data in HDF5 format for faster loading
 4. The first argument that you pass to the main.py is the algorithm that you want to run against the dataset.
 	```python
 	python main.py softmax
