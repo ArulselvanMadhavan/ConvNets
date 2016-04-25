@@ -1,4 +1,3 @@
-Readme.txt
 1. Install python3. We suggest using Anaconda3 as it comes with almost all the packages that we use in this project.
 2. Print the help options
 python main.py -h
@@ -21,6 +20,17 @@ optional arguments:
 
  3. Download the data and save it in the data folder.
  	Note: Download the python version from here -> https://www.cs.toronto.edu/~kriz/cifar.html
+ 	Setting up the data:
+	Download the python version of the data from here -> https://www.cs.toronto.edu/~kriz/cifar.html
+	The dataset can be parsed and loaded with python2
+	Install python2
+	Install numpy (pip install numpy)
+	Install h5py (pip install h5py)
+	Run the following command
+	"python main.py knn -l"
+	After you run the command, you should see train.h5,test.h5 files created in the data directory.
+	Only for the first time,you run the python main.py you have to use the "-l" flag. 
+	VERY IMPORTANT: We use python2 only to parse the dataset. The rest of the project uses python3.
 
  4. The raw data takes a lot of time to load. So, we stored the data in HDF5 format for faster loading.
  5. The data can be converted to HDF5 using the --loadCIFAR flag
