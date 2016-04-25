@@ -69,7 +69,7 @@
 7. If you want to run cnn, use the runme.ipynb notebook.
 8. To run that notebook, you must have the jupyter kernel installed. 
 9. From the src/ directory start the kernel 
-	```sh
+	```
 	jupyter notebook
 	```
 10. Follow the steps in the notebook to test the CNN implementation.
