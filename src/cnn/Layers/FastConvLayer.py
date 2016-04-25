@@ -1,3 +1,5 @@
+#The cython modules used in here are taken from the pydeeplearn library.
+#https://github.com/samehkhamis/pydeeplearn/tree/master/pydeeplearn
 import numpy as np
 from cnn.Layers.BaseLayer import BaseLayer
 from cnn.Layers.BaseNeuron import BaseNeuron

@@ -10,7 +10,7 @@ from cnn.BaseNeuralNetwork import BaseNeuralNetwork
 class Worker(object):
     def __init__(self, conv_model, update, train_size=49000,
                  test_size=10000, val_size=1000, batch_size=100,
-                 epochs_count=10, lr_decay=1.0, debug=True, print_every=10):
+                 epochs_count=10, lr_decay=1.0, debug=True, debug_every=10):
         """
         :param conv_model: A Neural Network model
         :param update: A Gradient Update function
@@ -21,7 +21,7 @@ class Worker(object):
         :param epochs_count: Number of epochs
         :param lr_decay: Learning rate decay
         :param debug: Debug flag
-        :param print_every: How often you want to print the training loss
+        :param debug_every: How often you want to print the training loss
         :return: A worker object
         """
         self.model = conv_model
@@ -38,7 +38,7 @@ class Worker(object):
         self.W_configs = []  # Stores the configurations specific to Gradient update functions on W
         self.b_configs = []  # Stores the configurations specific to Gradient update functions on b
         self.loss = 0.0
-        self.print_every = print_every
+        self.debug_every = debug_every
         for i in range(len(self.model.layer_objs)):
             self.W_configs.append(copy.deepcopy(update))
             self.b_configs.append(copy.deepcopy(update))
@@ -70,7 +70,7 @@ class Worker(object):
             self._send_pulse()
 
             # Maybe print training loss
-            if self.debug and t % self.print_every == 0:
+            if self.debug and t % self.debug_every == 0:
                 print('loss: %f after (Iteration %d / %d)' % (
                     self.loss,t + 1, iterations_count,))
 
