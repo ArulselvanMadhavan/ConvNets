@@ -21,7 +21,7 @@ from cnn.ConvolutionalNeuralNetwork import ConvolutionalNeuralNetwork
 
 filters_list = [32]
 dims,out_dims = ConvolutionalNeuralNetwork.generateConvLayerDimensions(filters_list)
-modl = ConvolutionalNeuralNetwork(dims,out_dims,weight_scale=0.05,filter_size=3)
+modl = ConvolutionalNeuralNetwork(dims,out_dims,weight_scale=0.05,filter_size=3,reg=0.05)
 worker = Worker(modl,StochasticGradientUpdate(1e-3),
                 train_size=100,
                 epochs_count=20,
