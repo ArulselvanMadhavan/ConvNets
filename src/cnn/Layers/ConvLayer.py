@@ -60,7 +60,6 @@ class ConvLayer(BaseLayer, BaseNeuron):
     @cache.setter
     def cache(self, newvalue):
         self._fwdcache = newvalue
-
     def forward(self, x):
         """
         X - I/p image
@@ -101,7 +100,6 @@ class ConvLayer(BaseLayer, BaseNeuron):
                         x_col[img][filterId][width][height] = np.sum(xin * kernel_3d) + bias
                         h_start += stride
                     w_start += stride
-
         self.cache = x
         return x_col
 

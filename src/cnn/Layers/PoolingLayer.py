@@ -79,32 +79,3 @@ class PoolingLayer(BaseLayer):
                         window[ind_pos] = dout[image, channel, bh, bw]
                         dx[image, channel, h_start:h_end, w_start:w_end] = window
         return dx
-
-    # def forward(self, x):
-    #     N, C, img_height, img_width = x.shape
-    #     F, C, HH, WW = self.W.shape
-    #     stride = self.stride
-    #     H_out = 1 + (img_height  - HH) // stride
-    #     W_out = 1 + (img_width  - WW) // stride
-    #
-    #     x_col = np.zeros((N, F, H_out, W_out))
-    #     y_col = np.zeros((N, F, H_out, W_out)) # for storing max index
-    #     for img in range(N):
-    #         for filterId in range(F):
-    #             w_start = 0
-    #             for width in range(W_out):
-    #                 w_end = w_start + WW
-    #                 h_start = 0
-    #                 for height in range(H_out):
-    #                     h_end = h_start + HH
-    #                     xin = img[:, w_start:w_end, h_start:h_end]
-    #                     max_value = xin.np.amax
-    #                     max_index = xin.np.argmax
-    #                     x_col[img][filterId][width][height] = max_value
-    #                     y_col[img][filterId][width][height] = max_index
-    #                     h_start += stride
-    #                 w_start += stride
-    #
-    #     self.cache = x
-    #     self._maxIndexCache = y_col
-    #     return x_col
