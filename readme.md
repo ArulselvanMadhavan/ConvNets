@@ -70,7 +70,8 @@
 	python main.py softmax -z -f 1 2
 	```
 7. If you want to run cnn, you can either use the runme.ipynb notebook or the runme.py file.
-  * To run the notebook, you must have the jupyter kernel installed. 
+  * Follow the instructions in the file to run the cnn code.
+  * If you want to use the notebook, you must have the jupyter kernel installed.
 8. The file by default has the best configurations that worked for us. If you want to change the configurations, you can do that by passing your configurations as arguments to the constructor.
 
  Note: We have tested our code on MacOSx machine. So, we'd prefer that you use a MacOSX machine to test our implementation.If you run into any issues while testing the code, please email us.
