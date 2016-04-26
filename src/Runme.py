@@ -17,7 +17,7 @@ from cnn.GradientUpdates.StochasticGradientUpdate import StochasticGradientUpdat
 from cnn.ConvolutionalNeuralNetwork import ConvolutionalNeuralNetwork
 
 
-# In[8]:
+# In[10]:
 
 filters_list = [32]
 dims,out_dims = ConvolutionalNeuralNetwork.generateConvLayerDimensions(filters_list)
@@ -30,7 +30,7 @@ worker = Worker(modl,StochasticGradientUpdate(1e-3),
                 debug=True,
                 debug_every=1)
 worker.train()
-worker.test()
+print("Test Accuracy:{}".format(worker.test()))
 
 
 # In[ ]:
