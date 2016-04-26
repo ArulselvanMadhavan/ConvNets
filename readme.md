@@ -20,7 +20,8 @@
 	  -z, --zca             ZCA Whitening
 	```
 	
-3. Download the data and save it in the data folder
+3. **You may skip this step if you have the link to HDF5 format files.If you don't have the link to HDF5 files, email us for the link and proceed with step 3**
+  * Download the data and save it in the data folder
   * Download the python version from here -> https://www.cs.toronto.edu/~kriz/cifar.html
   * The dataset can be parsed and loaded with python2. This is a restriction imposed by the dataset.
   * Install python2
@@ -75,6 +76,5 @@
 	jupyter notebook
 	```
 10. Follow the steps in the notebook to test the CNN implementation.
-
 
  Note: We have tested our code on MacOSx machine. So, we'd prefer that you use a MacOSX machine to test our implementation.If you run into any issues while testing the code, please email us.
