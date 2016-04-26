@@ -37,6 +37,10 @@
   	```python
   	pip install scikit-image
   	```
+  * Install cython
+  	```python
+  	pip install cython
+  	```
   * Run the following command
 	```python
 	python main.py knn -l
