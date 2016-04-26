@@ -33,6 +33,10 @@
 	```python
 	pip install h5py
 	```
+  * Install scikit-image
+  	```python
+  	pip install scikit-image
+  	```
   * Run the following command
 	```python
 	python main.py knn -l
