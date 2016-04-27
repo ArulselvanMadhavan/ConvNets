@@ -25,7 +25,7 @@ dims,out_dims = ConvolutionalNeuralNetwork.generateConvLayerDimensions(filters_l
 modl = ConvolutionalNeuralNetwork(dims,out_dims,weight_scale=0.05,filter_size=3,reg=0.05)
 worker = Worker(modl,Adam(1e-3),
                 train_size=49000,
-                epochs_count=,
+                epochs_count=20,
                 batch_size=50,
                 lr_decay=0.95,
                 debug=True,
