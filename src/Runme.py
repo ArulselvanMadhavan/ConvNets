@@ -16,8 +16,6 @@ from cnn.Worker import Worker
 from cnn.GradientUpdates.StochasticGradientUpdate import StochasticGradientUpdate
 from cnn.GradientUpdates.Adam import Adam
 from cnn.ConvolutionalNeuralNetwork import ConvolutionalNeuralNetwork
-get_ipython().magic('load_ext autoreload')
-get_ipython().magic('autoreload 2')
 
 
 # In[ ]:
