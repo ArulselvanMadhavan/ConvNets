@@ -112,7 +112,7 @@ class Worker(object):
         :param y:
         :return:
         """
-        return Validator.get_accuracy(self.model, self.X_test, self.Y_test)
+        return Validator.get_accuracy_with_confusion_matrix(self.model, self.X_test, self.Y_test)
 
     @staticmethod
     def normalized_data(train_size, test_size, val_size):
