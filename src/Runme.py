@@ -9,27 +9,29 @@
 # ```
 # Run the following cells in order.
 
-# In[5]:
+# In[26]:
 
 import numpy as np
 from cnn.Worker import Worker
 from cnn.GradientUpdates.StochasticGradientUpdate import StochasticGradientUpdate
+from cnn.GradientUpdates.Adam import Adam
 from cnn.ConvolutionalNeuralNetwork import ConvolutionalNeuralNetwork
+get_ipython().magic('load_ext autoreload')
+get_ipython().magic('autoreload 2')
 
 
-# In[14]:
+# In[ ]:
 
-filters_list = [32]
-dims,out_dims = ConvolutionalNeuralNetwork.generateConvLayerDimensions(filters_list,filter_size=5)
-print(out_dims)
-modl = ConvolutionalNeuralNetwork(dims,out_dims,weight_scale=0.05,filter_size=5)
-worker = Worker(modl,StochasticGradientUpdate(1e-3),
-                train_size=100,
-                epochs_count=20,
+filters_list = [128]
+dims,out_dims = ConvolutionalNeuralNetwork.generateConvLayerDimensions(filters_list,filter_size=3)
+modl = ConvolutionalNeuralNetwork(dims,out_dims,weight_scale=0.05,filter_size=3,reg=0.05)
+worker = Worker(modl,Adam(1e-3),
+                train_size=49000,
+                epochs_count=,
                 batch_size=50,
                 lr_decay=0.95,
                 debug=True,
-                debug_every=1)
+                debug_every=1000)
 worker.train()
 print("Test Accuracy:{}".format(worker.test()))
 
