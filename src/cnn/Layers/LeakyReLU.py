@@ -2,7 +2,7 @@ from cnn.Layers.BaseLayer import BaseLayer
 import numpy as np
 
 
-class RectifierLinearUnit(BaseLayer):
+class LeakyReLU(BaseLayer):
     def __init__(self):
         self._fwdcache = None
 
@@ -16,9 +16,10 @@ class RectifierLinearUnit(BaseLayer):
 
     def forward(self, X):
         self.cache = X
-        self.mask = X < 0
-        return np.where(X < 0, 0.01 * X, X)
+        return np.where(X <= 0, 0.01 * X, X)
 
     def backward(self, dout):
-        dout[self.mask] = 0.01
-        return dout
+        dx, x = None, self.cache
+        dx = np.array(dout, copy=True)
+        dx[x <= 0] = 0.01
+        return dx
