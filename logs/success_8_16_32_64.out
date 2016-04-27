@@ -1,0 +1,51 @@
+Loading ../data/train.h5 file
+List of arrays in this file: 
+ KeysView(<HDF5 file "train.h5" (mode r)>)
+Loading ../data/test.h5 file
+List of arrays in this file: 
+ KeysView(<HDF5 file "test.h5" (mode r)>)
+(50000, 3072)	(50000,)	(10000, 3072)	(10000,)
+
+/home/ubuntu/ConvNets/src/cnn/Layers/PoolingLayer.py:89: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  W / pw, pw)
+loss: 5.578621 after (Iteration 1 / 19600)
+(Epoch 1 / 20) train_acc: 0.537000; val_acc: 0.526000
+loss: 3.922423 after (Iteration 1001 / 19600)
+(Epoch 2 / 20) train_acc: 0.620000; val_acc: 0.599000
+loss: 4.425513 after (Iteration 2001 / 19600)
+(Epoch 3 / 20) train_acc: 0.620000; val_acc: 0.623000
+loss: 5.332357 after (Iteration 3001 / 19600)
+(Epoch 4 / 20) train_acc: 0.657000; val_acc: 0.650000
+loss: 5.962472 after (Iteration 4001 / 19600)
+(Epoch 5 / 20) train_acc: 0.724000; val_acc: 0.659000
+loss: 6.173024 after (Iteration 5001 / 19600)
+(Epoch 6 / 20) train_acc: 0.654000; val_acc: 0.662000
+loss: 6.430056 after (Iteration 6001 / 19600)
+(Epoch 7 / 20) train_acc: 0.704000; val_acc: 0.677000
+loss: 6.927711 after (Iteration 7001 / 19600)
+(Epoch 8 / 20) train_acc: 0.759000; val_acc: 0.669000
+loss: 7.607356 after (Iteration 8001 / 19600)
+(Epoch 9 / 20) train_acc: 0.760000; val_acc: 0.661000
+loss: 7.748329 after (Iteration 9001 / 19600)
+(Epoch 10 / 20) train_acc: 0.763000; val_acc: 0.679000
+loss: 8.468716 after (Iteration 10001 / 19600)
+(Epoch 11 / 20) train_acc: 0.757000; val_acc: 0.694000
+loss: 8.583681 after (Iteration 11001 / 19600)
+(Epoch 12 / 20) train_acc: 0.737000; val_acc: 0.699000
+loss: 8.728313 after (Iteration 12001 / 19600)
+(Epoch 13 / 20) train_acc: 0.812000; val_acc: 0.699000
+loss: 8.946610 after (Iteration 13001 / 19600)
+(Epoch 14 / 20) train_acc: 0.792000; val_acc: 0.689000
+loss: 9.272212 after (Iteration 14001 / 19600)
+(Epoch 15 / 20) train_acc: 0.798000; val_acc: 0.714000
+loss: 9.324370 after (Iteration 15001 / 19600)
+(Epoch 16 / 20) train_acc: 0.804000; val_acc: 0.698000
+loss: 9.462487 after (Iteration 16001 / 19600)
+(Epoch 17 / 20) train_acc: 0.789000; val_acc: 0.697000
+loss: 9.691728 after (Iteration 17001 / 19600)
+(Epoch 18 / 20) train_acc: 0.845000; val_acc: 0.698000
+loss: 9.995523 after (Iteration 18001 / 19600)
+(Epoch 19 / 20) train_acc: 0.833000; val_acc: 0.697000
+loss: 10.116570 after (Iteration 19001 / 19600)
+(Epoch 20 / 20) train_acc: 0.805000; val_acc: 0.691000
+Test Accuracy:0.6882

@@ -1,0 +1,49 @@
+Loading ../data/train.h5 file
+List of arrays in this file: 
+ KeysViewWithLock(<HDF5 file "train.h5" (mode r)>)
+Loading ../data/test.h5 file
+List of arrays in this file: 
+ KeysViewWithLock(<HDF5 file "test.h5" (mode r)>)
+(50000, 3072)	(50000,)	(10000, 3072)	(10000,)
+
+loss: 29.861066 after (Iteration 1 / 19600)
+(Epoch 1 / 20) train_acc: 0.593000; val_acc: 0.546000
+loss: 31.247358 after (Iteration 1001 / 19600)
+(Epoch 2 / 20) train_acc: 0.635000; val_acc: 0.610000
+loss: 36.848401 after (Iteration 2001 / 19600)
+(Epoch 3 / 20) train_acc: 0.681000; val_acc: 0.651000
+loss: 42.847836 after (Iteration 3001 / 19600)
+(Epoch 4 / 20) train_acc: 0.747000; val_acc: 0.692000
+loss: 48.232153 after (Iteration 4001 / 19600)
+(Epoch 5 / 20) train_acc: 0.836000; val_acc: 0.705000
+loss: 53.681430 after (Iteration 5001 / 19600)
+(Epoch 6 / 20) train_acc: 0.804000; val_acc: 0.722000
+loss: 58.989385 after (Iteration 6001 / 19600)
+(Epoch 7 / 20) train_acc: 0.850000; val_acc: 0.737000
+loss: 63.919577 after (Iteration 7001 / 19600)
+(Epoch 8 / 20) train_acc: 0.880000; val_acc: 0.703000
+loss: 68.395875 after (Iteration 8001 / 19600)
+(Epoch 9 / 20) train_acc: 0.906000; val_acc: 0.712000
+loss: 72.514621 after (Iteration 9001 / 19600)
+(Epoch 10 / 20) train_acc: 0.939000; val_acc: 0.730000
+loss: 76.246892 after (Iteration 10001 / 19600)
+(Epoch 11 / 20) train_acc: 0.942000; val_acc: 0.745000
+loss: 79.528557 after (Iteration 11001 / 19600)
+(Epoch 12 / 20) train_acc: 0.966000; val_acc: 0.737000
+loss: 82.384373 after (Iteration 12001 / 19600)
+(Epoch 13 / 20) train_acc: 0.954000; val_acc: 0.723000
+loss: 84.957566 after (Iteration 13001 / 19600)
+(Epoch 14 / 20) train_acc: 0.974000; val_acc: 0.729000
+loss: 87.338170 after (Iteration 14001 / 19600)
+(Epoch 15 / 20) train_acc: 0.974000; val_acc: 0.742000
+loss: 89.526826 after (Iteration 15001 / 19600)
+(Epoch 16 / 20) train_acc: 0.980000; val_acc: 0.725000
+loss: 91.483844 after (Iteration 16001 / 19600)
+(Epoch 17 / 20) train_acc: 0.988000; val_acc: 0.732000
+loss: 92.936505 after (Iteration 17001 / 19600)
+(Epoch 18 / 20) train_acc: 0.981000; val_acc: 0.729000
+loss: 94.657408 after (Iteration 18001 / 19600)
+(Epoch 19 / 20) train_acc: 0.984000; val_acc: 0.727000
+loss: 95.839102 after (Iteration 19001 / 19600)
+(Epoch 20 / 20) train_acc: 0.986000; val_acc: 0.739000
+Test Accuracy:0.7169
